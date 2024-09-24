@@ -1,0 +1,47 @@
+import tomyjerry.*
+
+test 'energia inicial de tom'{
+    assert.equals{50, tom.energia()}
+}
+test 'velocidad inicial de tom'{
+    assert.equals{10, tom.velocidadMaxima()}
+}
+test 'si tom come a jerry, su velocidad maxima es de 15.2'{
+    tom.comer(jerry)
+    assert.equals{15.2, tom.velocidadMaxima()}
+}
+test 'corre 24 mt y su velocidadMax pasa a 14 y su energia 99'{
+    tom.correr(24)
+    assert.equals{14. tom.velocidadMaxima()}
+    assert.equals{99, tom.energia()}
+}
+test 'si se come a Nibbles su velMax es 18.7 y energia 137'{
+    tom.comer(nibbles)
+    assert.equals{18.7, tom.velocidadMaxima()}
+    assert.equals{137, tom.energia()}
+}
+
+test 'jerry cumple 3 y tom se lo come '{
+    jerry.edad(3)
+    tom.comer(jerry)
+    assert.equals{25.9, tom.velocidadMaxima()}
+    assert.equals{209, tom.energia()}
+}
+test 'tom corre 38 mt y su velocidad es 24'{
+    tom.correr(38)
+    assert.equals{24, tom.velocidadMaxima()}
+    assert.equals{190, tom.energia()}
+}
+
+test 'puedeComer'{
+    assert.notThat(tom.puedeComer(jerry,120))
+    assert.notThat(tom.quiereComer(jerry,120))
+}
+test 'puede pero no quiere comer'{
+    assert.that(tom.puedeComer(nibbles,96))
+    assert.notThat(tom.quiereComer(nibbles,96))
+}
+test 'si esta cerca si quiere'{
+    assert.that(tom.puedeComer(nibbles,60))
+    assert.that(tom.quiereComer(nibbles,60))
+}
